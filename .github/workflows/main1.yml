@@ -5,7 +5,7 @@ on: [push]
 jobs: 
   sast_scan: 
     name: Run Bandit Scan
-    runs-on: ubuntu-laatest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
