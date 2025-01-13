@@ -42,12 +42,18 @@ jobs:
       with: 
         version: latest
 
-    - name: Buils docker image
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+
+    - name: Build docker image
       run: docker build -f Dockerfile -t myapp:latest .
 
-    - name: Docker Scout 
-      uses: docker/scout-action@v1.16.1
-      with:
-        command: quickvew, cves
+    - name: Install Docker Scout
+      run: docker scout install
+
+    - name: Docke scout scan
+      run: 
+        docker scout quickview
+        docker scout cves
         
         
