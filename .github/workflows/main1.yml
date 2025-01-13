@@ -28,3 +28,26 @@ jobs:
       with:
         name: bandit-findings
         path: bandit-report.json
+
+  image_scan:
+    name: Build Image and Run Image Scan
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4.2.2
+
+    - name: Setup docker
+      uses: docker/setup-docker-action@v3 
+      with: 
+        version: latest
+
+    - name: Buils docker image
+      run: docker build -f Dockerfile -t myapp:latest .
+
+    - name: Docker Scout 
+      uses: docker/scout-action@v1.16.1
+      with:
+        command: quickvew, cves
+        
+        
