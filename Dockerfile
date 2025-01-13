@@ -12,8 +12,8 @@ RUN apt-get update && \
 
 
 # Set environment variables
-ENV PYTHONDONTWRITEBYTECODE= 1
-ENV PYTHONUNBUFFERED= 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 
 # Install dependencies
